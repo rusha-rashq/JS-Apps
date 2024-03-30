@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chen-Ho Encoding Converter</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+input {
+  width: 100px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.output {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>Chen-Ho Encoding Converter</h1>
+<input type="text" id="decimalNumber" placeholder="Enter a decimal number">
+<button onclick="convert()">Convert</button>
+<div class="output"></div>
+<script>
+function convert() {
+  var decimalNumber = document.getElementById("decimalNumber").value;
+  var chenHoEncoding = "";
+
+  // Convert the decimal number to Chen-Ho encoding.
+  for (var i = 0; i < decimalNumber.length; i++) {
+    var digit = decimalNumber[i] - '0';
+
+    if (digit < 8) {
+      chenHoEncoding += digit.toString(2);
+    } else {
+      chenHoEncoding += '1' + (digit - 8).toString(2);
+    }
+  }
+
+  // Display the Chen-Ho encoding.
+  document.querySelector(".output").innerHTML = chenHoEncoding;
+}
+</script>
+</body>
+</html>

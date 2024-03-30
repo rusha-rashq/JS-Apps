@@ -1,0 +1,56 @@
+/* Set the default font and styles for the body element */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height to fill the entire viewport */
+    margin: 0;
+    background-color: #f7f1c2; /* Set the background color */
+}
+
+/* Set the styles for the container div */
+.container {
+    width: 50%; /* Set the width to 50% of the parent element */
+    background-color: #efd685;
+    padding: 30px; /* Add padding around the content */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Set the styles for the h1 element */
+h1 {
+    text-align: center; /* Center the text */
+    margin-bottom: 30px; /* Add a margin below the title */
+}
+
+/* Set the styles for the textarea element */
+textarea {
+    width: 100%; /* Set the width to fill the parent element */
+    min-height: 200px; /* Set the minimum height */
+    padding: 10px; /* Add padding around the content */
+    resize: none; /* Disable resizing */
+    border: 1px solid #f6c6c0; /* Set a border around the textarea */
+}
+
+/* Set the styles for the button element */
+button {
+    display: block; /* Display as a block element */
+    width: 100%; /* Set the width to fill the parent element */
+    padding: 10px; /* Add padding around the content */
+    background-color: #1e77ca; /* Set the background color */
+    color: #ffffff; /* Set the text color */
+    border: none; /* Remove the default border */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+    margin-top: 20px; /* Add a margin above the button */
+    font-size: 16px; /* Set the font size */
+}
+
+/* Set the hover styles for the button element */
+button:hover {
+    background-color: #0e2f59; /* Change the background color on hover */
+}
+
+/* Set the styles for the paragraph elements */
+p {
+    font-size: 16px; /* Set the font size */
+}

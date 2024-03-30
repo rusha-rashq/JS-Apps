@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Decimal to Unary Converter</title>
+    <style>
+        body {
+            font-family: Courier, sans-serif;
+            background-color: #f2d4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            margin: 20px 0;
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decimal to Unary Converter</h1>
+        <input type="number" id="inputNumber" placeholder="Enter a decimal number" min="0">
+        <br>
+        <button onclick="convertToUnary()">Convert</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function convertToUnary() {
+            var inputNumber = document.getElementById('inputNumber').value;
+            var unary = "";
+            for (var i = 0; i < inputNumber; i++) {
+                unary += "1";
+            }
+            document.getElementById('result').innerText = 'Unary representation: ' + unary;
+        }
+    </script>
+    
+</body>
+</html>

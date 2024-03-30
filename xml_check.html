@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check XML Validity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #297eee, #3eacf0);
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 600px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        textarea {
+            width: 580px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Check XML Validity</h1>
+        <textarea id="xmlInput" rows="10"></textarea><br>
+        <button onclick="checkXML()">Check XML</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function checkXML() {
+            let input = document.getElementById('xmlInput').value;
+            let parser = new DOMParser();
+            let result = document.getElementById('result');
+
+            try {
+                let doc = parser.parseFromString(input, 'application/xml');
+                if (doc.getElementsByTagName('parsererror').length > 0) {
+                    throw new Error('Invalid XML');
+                }
+                result.style.color = 'green';
+                result.textContent = 'This is a valid XML string.';
+            } catch (e) {
+                result.style.color = 'red';
+                result.textContent = 'Invalid XML string: ' + e.message;
+            }
+        }
+    </script>
+    
+</body>
+</html>

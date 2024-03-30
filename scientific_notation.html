@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scientific Notation Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, rgb(4, 43, 77) 0%, rgb(170, 225, 250) 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            width: 400px;
+        }
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 370px;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #fff;
+            color: #2065CC;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scientific Notation Converter</h1>
+        <input id="number" type="number" placeholder="Enter a number" />
+        <button onclick="convertToScientific()">Convert</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function convertToScientific() {
+            var num = document.getElementById("number").value;
+            var result = Number(num).toExponential();
+            document.getElementById("result").innerHTML = 'Scientific notation: <span style="color: #FF9800;">' + result + '</span>';
+        }
+    </script>
+    
+</body>
+</html>

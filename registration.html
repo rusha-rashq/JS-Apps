@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin: 30px 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var form = document.getElementById("registrationForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Perform validation
+            if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            } else {
+            // Registration successful
+            alert("Registration successful!\n\nName: " + firstName + " " + lastName + "\nEmail: " + email);
+            form.reset(); // Reset form fields
+            }
+        });
+      var resetButton = document.getElementById("resetButton");
+      
+        resetButton.addEventListener("click", function() {
+            form.reset();
+        });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required>
+      </div>
+      <div class="button-group">
+        <button type="submit">Register
+	</button>
+    <button type="button" id="resetButton">Reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

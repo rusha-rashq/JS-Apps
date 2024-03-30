@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Trivia Game</h2>
+                        <div id="questionContainer">
+                            <!-- Question will be generated here -->
+                        </div>
+                        <button class="btn btn-primary btn-block my-3" id="nextButton" onclick="nextQuestion()">Next</button>
+                        <button class="btn btn-success btn-block my-3 d-none" id="submitButton" onclick="submitQuiz()">Submit</button>
+                        <h5 class="card-subtitle mb-3 text-muted text-center">Score: <span id="score">0</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: 'What is the capital of France?',
+                answers: ['Paris', 'London', 'Berlin', 'Madrid'],
+                correctAnswer: 'Paris'
+            },
+            {
+                question: 'Who wrote "To Kill a Mockingbird"?',
+                answers: ['Harper Lee', 'J.D. Salinger', 'Ernest Hemingway', 'F. Scott Fitzgerald'],
+                correctAnswer: 'Harper Lee'
+            },
+            {
+                question: 'What is the square root of 144?',
+                answers: ['10', '12', '14', '16'],
+                correctAnswer: '12'
+            },
+            {
+                question: 'Who painted the Mona Lisa?',
+                answers: ['Vincent Van Gogh', 'Pablo Picasso', 'Leonardo da Vinci', 'Claude Monet'],
+                correctAnswer: 'Leonardo da Vinci'
+            },
+            {
+                question: 'What is the chemical symbol for Gold?',
+                answers: ['G', 'Go', 'Au', 'Ag'],
+                correctAnswer: 'Au'
+            },
+            {
+                question: 'Who discovered penicillin?',
+                answers: ['Louis Pasteur', 'Alexander Fleming', 'Marie Curie', 'Isaac Newton'],
+                correctAnswer: 'Alexander Fleming'
+            },
+            {
+                question: 'In what year was the first man-made satellite, Sputnik, launched?',
+                answers: ['1957', '1960', '1969', '1950'],
+                correctAnswer: '1957'
+            },
+        ];
+
+        let score = 0;
+        let currentQuestionIndex = 0;
+
+        function generateQuestion() {
+            const questionContainer = document.getElementById('questionContainer');
+            questionContainer.innerHTML = '';
+
+            const question = questions[currentQuestionIndex];
+            const questionElement = document.createElement('p');
+            questionElement.classList.add('lead');
+            questionElement.textContent = question.question;
+            questionContainer.appendChild(questionElement);
+
+            question.answers.forEach(answer => {
+                const answerElement = document.createElement('div');
+                answerElement.classList.add('form-check');
+
+                const input = document.createElement('input');
+                input.setAttribute('type', 'radio');
+                input.setAttribute('name', 'question');
+                input.setAttribute('value', answer);
+                input.classList.add('form-check-input');
+
+                const label = document.createElement('label');
+                label.textContent = answer;
+                label.classList.add('form-check-label');
+
+                answerElement.appendChild(input);
+                answerElement.appendChild(label);
+                questionContainer.appendChild(answerElement);
+            });
+        }
+
+        function nextQuestion() {
+            const questionContainer = document.getElementById('questionContainer');
+            const selectedAnswer = questionContainer.querySelector(`input[name="question"]:checked`).value;
+
+            if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                generateQuestion();
+            } else {
+                document.getElementById('nextButton').classList.add('d-none');
+                document.getElementById('submitButton').classList.remove('d-none');
+            }
+        }
+
+        function submitQuiz() {
+            const questionContainer = document.getElementById('questionContainer');
+            questionContainer.innerHTML = '<p class="lead">Game over! Your final score is: ' + score + '</p>';
+        }
+
+        generateQuestion();
+    </script> 
+</body>
+</html>

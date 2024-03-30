@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Triangle Area Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>Triangle Area Calculator</h2>
+        <form onsubmit="event.preventDefault(); calculateArea();">
+          <div class="form-group">
+            <label for="sideA">Side A:</label>
+            <input type="number" class="form-control" id="sideA" required>
+          </div>
+          <div class="form-group">
+            <label for="sideB">Side B:</label>
+            <input type="number" class="form-control" id="sideB" required>
+          </div>
+          <div class="form-group">
+            <label for="sideC">Side C:</label>
+            <input type="number" class="form-control" id="sideC" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate Area</button>
+        </form>
+        <div class="mt-3">
+          <h2 id="result"></h2>
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function calculateArea() {
+        // Get side lengths from input fields
+        let sideA = document.getElementById('sideA').value;
+        let sideB = document.getElementById('sideB').value;
+        let sideC = document.getElementById('sideC').value;
+    
+        // Convert them to numbers
+        sideA = Number(sideA);
+        sideB = Number(sideB);
+        sideC = Number(sideC);
+    
+        // Calculate semi-perimeter
+        let s = (sideA + sideB + sideC) / 2;
+    
+        // Calculate area using Heron's formula
+        let area = Math.sqrt(s*(s - sideA)*(s - sideB)*(s - sideC));
+    
+        // Display the result
+        document.getElementById('result').innerHTML = "Area: " + area.toFixed(2);
+        }
+    </script>
+  
+
+</body>
+</html>
+

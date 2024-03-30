@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excess 3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+            color: #333;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            color: white;
+            background: #030c54;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        #input {
+            width: 200px;
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #3f51b5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #303f9f;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Excess-3 Converter</h2>
+        <input type="number" id="input" placeholder="Enter a decimal number" oninput="validity.valid||(value='')">
+        <button onclick="convertToExcess3()">Convert</button>
+        <div id="output"></div>
+    </div>
+    <script>
+        function convertToExcess3() {
+            var input = document.getElementById('input').value;
+            var output = "";
+            for (var i = 0; i < input.length; i++) {
+                var num = parseInt(input[i]);
+                num += 3;
+                output += num.toString(2).padStart(4, '0');
+            }
+            document.getElementById('output').innerHTML = "Excess-3: " + output;
+        }
+    </script>
+    
+</body>
+</html>

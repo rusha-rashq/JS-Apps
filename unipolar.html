@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unipolar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color: blanchedalmond;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f1f1dd;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .result {
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Decimal to Unipolar Binary Converter</h2>
+        <div class="input-group">
+            <input type="number" class="form-control" id="decimalInput" min="0" placeholder="Enter a decimal number">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" onclick="convertToUnipolar()">Convert</button>
+            </div>
+        </div>
+        <div class="result" id="result">
+        </div>
+    </div>
+    <script>
+        function convertToUnipolar() {
+            var decimalNumber = document.getElementById("decimalInput").value;
+            var unipolarBinary = '';
+
+            for (let i = 0; i < decimalNumber; i++) {
+                unipolarBinary += '1';
+            }
+
+            for (let i = unipolarBinary.length; i < 8; i++) {
+                unipolarBinary += '0';
+            }
+
+            document.getElementById("result").innerHTML = `Unipolar encoding of ${decimalNumber}: ${unipolarBinary}`;
+        }
+    </script>
+</body>
+</html>

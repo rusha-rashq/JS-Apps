@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .quote-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .quote {
+            font-size: 2em;
+        }
+
+        .author {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div id="quote" class="quote"></div>
+        <div id="author" class="author"></div>
+    </div>
+
+    <script>
+        const quotes = [
+            { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { quote: "You miss 100% of the shots you don’t take.", author: "Wayne Gretzky" },
+            { quote: "Whether you think you can or you think you can’t, you’re right.", author: "Henry Ford" },
+            { quote: "The purpose of our lives is to be happy.", author: "Dalai Lama" },
+            { quote: "I find that the harder I work, the more luck I seem to have.", author: "Thomas Jefferson" },
+            { quote: "Opportunities don't happen. You create them.", author: "Chris Grosser" },
+            { quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+            { quote: "Don’t be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
+            { quote: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.", author: "Albert Schweitzer" },
+            { quote: "Life is what happens when you’re busy making other plans.", author: "John Lennon" }
+        ];
+
+        window.onload = function() {
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quote').textContent = quote.quote;
+            document.getElementById('author').textContent = '- ' + quote.author;
+        };
+    </script>
+</body>
+</html>

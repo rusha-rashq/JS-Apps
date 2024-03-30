@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vigenere Cipher</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #f5f5f5;
+                background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+                color: #333;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 2em;
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 8px;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+                margin-top: 5em;
+            }
+            .input-group {
+                margin-bottom: 1em;
+            }
+            .input-group label {
+                display: block;
+                margin-bottom: 0.5em;
+            }
+            .input-group input, .input-group textarea {
+                width: 100%;
+                padding: 0.5em;
+                font-size: 1em;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            button {
+                padding: 0.5em 1em;
+                background-color: #007BFF;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1em;
+                margin-top: 1em;
+            }
+            .output-group {
+                margin-top: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Vigenere Cipher</h1>
+            <div class="input-group">
+                <label for="message">Message:</label>
+                <textarea id="message"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="key">Key:</label>
+                <input type="text" id="key">
+            </div>
+            <button onclick="encrypt()">Encrypt</button>
+            <div class="output-group">
+                <label for="encrypted">Encrypted Message:</label>
+                <textarea id="encrypted" readonly></textarea>
+            </div>
+        </div>
+        <script>
+            function encrypt() {
+                const message = document.getElementById('message').value;
+                const key = document.getElementById('key').value;
+                let encrypted = '';
+                
+                for (let i = 0; i < message.length; i++) {
+                    let messageChar = message.charCodeAt(i);
+                    let keyChar = key.charCodeAt(i % key.length);
+                    
+                    if (messageChar >= 65 && messageChar <= 90) {
+                        encrypted += String.fromCharCode((messageChar - 65 + keyChar - 65) % 26 + 65);
+                    } else if (messageChar >= 97 && messageChar <= 122) {
+                        encrypted += String.fromCharCode((messageChar - 97 + keyChar - 97) % 26 + 97);
+                    } else {
+                        encrypted += message[i];
+                    }
+                }
+                
+                document.getElementById('encrypted').value = encrypted;
+            }
+        </script>
+        
+    </body>
+</html>
